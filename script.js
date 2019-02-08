@@ -50,34 +50,27 @@
     //Randomize order in order array
     function setOrder(){
 
+        var temp = [];
         var rand;
-        var temp;
 
-        for(i in images){
-            for(j in images){
-                if(i!=j){
-                    rand = Math.random();
-                    if(rand >= 0.5){
-                        temp = images[i];
-                        images[i] = images[j];
-                        images[j] = temp;
-                    }
-                }
-            }
+        var imagesLength = images.length;
+        var orderLength = order.length;
+
+        for(var i=0 ; i<imagesLength ; i++){
+            rand = Math.floor(Math.random()*images.length);
+            temp.push(images.splice(rand, 1)[0]);
         }
 
-        for(i in order){
-            for(j in order){
-                if(i!=j){
-                    rand = Math.random();
-                    if(rand >= 0.5){
-                        temp = order[i];
-                        order[i] = order[j];
-                        order[j] = temp;
-                    }
-                }
-            }
+        images = temp;
+        temp = [];
+
+        for(var i=0 ; i<orderLength ; i++){
+            rand = Math.floor(Math.random()*order.length);
+            temp.push(order.splice(rand, 1)[0]);
         }
+
+        order = temp;
+        temp = null;
     }
 
 
